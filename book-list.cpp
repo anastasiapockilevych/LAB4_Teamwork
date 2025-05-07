@@ -55,3 +55,35 @@ void searchByTitle(const std::vector<Book>& library, const std::string& title) {
         std::cout << "Книг з такою назвою не знайдено.\n";
     }
 }
+
+int main() {
+    std::vector<Book> library;
+    int choice;
+    do {
+        std::cout << "\n1. Додати книгу\n2. Переглянути всі книги\n3. Пошук за назвою\n4. Вийти\nВибір: ";
+        std::cin >> choice;
+        std::cin.ignore(); // очищення буфера
+        switch (choice) {
+            case 1:
+                addBook(library);
+                break;
+            case 2:
+                showBooks(library);
+                break;
+            case 3: {
+                std::string searchTitle;
+                std::cout << "Введіть назву (або частину): ";
+                std::getline(std::cin, searchTitle);
+                searchByTitle(library, searchTitle);
+                break;
+            }
+            case 4:
+                std::cout << "До побачення!\n";
+                break;
+            default:
+                std::cout << "Невірний вибір.\n";
+        }
+    } while (choice != 4);
+
+    return 0;
+}
