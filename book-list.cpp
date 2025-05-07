@@ -41,3 +41,17 @@ void showBooks(const std::vector<Book>& library) {
                   << b.genre << ", " << (b.isRead ? "прочитана" : "не прочитана") << "\n";
     }
 }
+
+void searchByTitle(const std::vector<Book>& library, const std::string& title) {
+    bool found = false;
+    for (const Book& b : library) {
+        if (b.title.find(title) != std::string::npos) {
+            std::cout << b.title << " - " << b.author << " (" << b.year << "), "
+                      << b.genre << ", " << (b.isRead ? "прочитана" : "не прочитана") << "\n";
+            found = true;
+        }
+    }
+    if (!found) {
+        std::cout << "Книг з такою назвою не знайдено.\n";
+    }
+}
