@@ -29,3 +29,15 @@ void addBook(std::vector<Book>& library) {
     library.push_back(newBook);
     std::cout << "Книгу додано!\n";
 }
+
+void showBooks(const std::vector<Book>& library) {
+    if (library.empty()) {
+        std::cout << "Бібліотека порожня.\n";
+        return;
+    }
+    for (size_t i = 0; i < library.size(); ++i) {
+        const Book& b = library[i];
+        std::cout << i+1 << ". " << b.title << " - " << b.author << " (" << b.year << "), "
+                  << b.genre << ", " << (b.isRead ? "прочитана" : "не прочитана") << "\n";
+    }
+}
